@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1657a8" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<title>DrugTest 5000</title>
+
+<style>
+
+:root{
+--bg:#eef2f7;
+--header1:#0d3c78;
+--header2:#1657a8;
+--card:#ffffff;
+--text:#17324f;
+--shadow:0 10px 22px rgba(0,0,0,.12);
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(180deg,#dfe7f1 0%,#eef2f7 100%);
+display:flex;
+justify-content:center;
+min-height:100vh;
+color:var(--text);
+}
+
+.phone{
+width:100%;
+max-width:430px;
+min-height:100vh;
+background:var(--bg);
+}
+
+.header{
+background:linear-gradient(180deg,var(--header1),var(--header2));
+color:white;
+padding:28px 20px;
+text-align:center;
+box-shadow:0 4px 14px rgba(0,0,0,.12);
+}
+
+.header h1{
+margin:0;
+font-size:28px;
+font-weight:800;
+}
+
+.back-btn{
+display:inline-block;
+margin:16px;
+padding:10px 16px;
+background:#e5e7eb;
+border-radius:12px;
+text-decoration:none;
+font-weight:700;
+color:#1f2937;
+box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.container{
+padding:0 16px 16px;
+display:grid;
+gap:16px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:18px;
+box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.title{
+font-size:20px;
+font-weight:800;
+margin-bottom:10px;
+color:#1657a8;
+}
+
+.step{
+margin-bottom:10px;
+font-size:16px;
+line-height:1.55;
+}
+
+.warning{
+background:#fff3cd;
+border-radius:14px;
+padding:14px;
+font-weight:700;
+}
+
+.danger{
+background:#ffe3e3;
+border-radius:14px;
+padding:14px;
+font-weight:700;
+}
+
+.ok{
+background:#e6f7ec;
+border-radius:14px;
+padding:14px;
+font-weight:700;
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="phone">
+
+<header class="header">
+<h1>DrugTest 5000</h1>
+</header>
+
+<a href="index.html" class="back-btn">← Назад</a>
+
+<div class="container">
+
+<div class="card">
+<div class="title">Как протича проверката</div>
+
+<div class="card warning">
+⚠️ За да се гарантира точността на резултата, в продължение на поне 10 минути преди вземането на пробата не трябва да сте:
+<br>• консумирали храна;  
+<br>• пили течности (вода, сокове, кафе);  
+<br>• пушили (цигари, вейп, нагряващ се тютюн);  
+<br>• дъвкали дъвка;  
+<br>• използвали лекарства или спрейове за уста.
+</div>
+
+<div class="step">1. Служителят трябва да постави анализатора на равна и стабилна повърхност.</div>
+<div class="step">2. Преди започване на теста трябва да постави хигиенни ръкавици.</div>
+<div class="step">3. Проверете тест касетата, тя трябва да бъде в срок на годност и опаковката да е здрава.</div>
+<div class="step">4. Тестът трябва да бъде отворен пред Вас или Вие сами да отворите опаковката.</div>
+<div class="step">5. Дават Ви тампон за вземане на проба от слюнка.</div>
+<div class="step">6. Тампонът се движи по бузите и венците.</div>
+<div class="step">7. Индикаторът трябва да стане син - това означава достатъчно количество проба.</div>
+<div class="step">8. Ако до около 4 минути индикаторът не стане син, тестът е невалиден и трябва да се направи нов.</div>
+<div class="step">9. Когато подавате тест касетата на служителя, наблюдавайте процеса, той трябва да постави касетата в анализатора пред Вас.</div>
+<div class="step">10. След това уредът започва автоматичен анализ.</div>
+
+</div>
+
+<div class="card">
+<div class="title">Температура на уреда</div>
+<div class="step">Уредът трябва да работи между +5°C и +40°C.</div>
+<div class="step">Ако устройството е съхранявано при твърде ниски или високи температури, му е нужно време да се климатизира преди употреба.</div>
+</div>
+<div class="card">
+  <div class="title">Видео инструкция</div>
+
+  <div class="video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/OcMosXKJRPI"
+      title="DrugTest 5000"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+<div class="card danger">
+❗ Тестът на пътя е само предварителен скрининг.
+<br><br>
+Окончателният резултат се доказва единствено чрез лабораторно изследване на кръв.
+</div>
+
+<div class="card ok">
+✔️ При положителен резултат винаги настоявайте за кръвна проба.
+</div>
+
+</div>
+
+</main>
+
+<script>
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+}
+</script>
+
+</body>
+</html>

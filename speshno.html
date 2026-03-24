@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#c1121f">
+<title>Спешно</title>
+
+<style>
+
+:root{
+--bg:#eef2f7;
+--card:#ffffff;
+--text:#17324f;
+--danger:#c1121f;
+--shadow:0 10px 22px rgba(0,0,0,.12);
+}
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(180deg,#dfe7f1 0%,#eef2f7 100%);
+display:flex;
+justify-content:center;
+min-height:100vh;
+color:var(--text);
+}
+
+.phone{
+width:100%;
+max-width:430px;
+min-height:100vh;
+background:var(--bg);
+}
+
+.header{
+background:linear-gradient(180deg,#8b0000,#c1121f);
+color:white;
+padding:28px 20px;
+text-align:center;
+box-shadow:0 4px 14px rgba(0,0,0,.12);
+}
+
+.header h1{
+margin:0;
+font-size:28px;
+font-weight:900;
+}
+
+.back-btn{
+display:inline-block;
+margin:16px;
+padding:12px 18px;
+background:#e5e7eb;
+border-radius:12px;
+text-decoration:none;
+font-weight:800;
+color:#1f2937;
+box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.content{
+padding:0 16px 20px;
+}
+
+.card{
+background:var(--card);
+border-radius:22px;
+box-shadow:var(--shadow);
+padding:20px;
+margin-bottom:16px;
+font-size:18px;
+line-height:1.6;
+}
+
+.big{
+font-size:21px;
+font-weight:900;
+}
+
+.red{
+color:var(--danger);
+font-weight:900;
+}
+
+ul{
+padding-left:20px;
+}
+
+.quote{
+background:#ffe3e3;
+border-radius:16px;
+padding:16px;
+font-weight:800;
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="phone">
+
+<header class="header">
+<h1>⚠️ СПЕШНО</h1>
+</header>
+
+<a href="index.html" class="back-btn">← Назад</a>
+
+<section class="content">
+
+<div class="card big">
+⚠️ ПОЛОЖИТЕЛЕН ТЕСТ НА ПЪТЯ
+</div>
+
+<div class="card">
+<span class="big">✅ Най-важното действие при положителен резултат е незабавно да настоявате за лабораторно изследване (кръвна проба).</span>
+<br><br>
+Само резултатът от кръвния тест има доказателствена стойност пред съда и може да потвърди или отхвърли показанията на полевото устройство.
+</div>
+
+<div class="card">
+<h3>🚗 Възможни мерки на място:</h3>
+<ul>
+<li>изземане на колата, ако е на твое име</li>
+<li>сваляне на регистрационните номера</li>
+<li>отнемане на шофьорската книжка</li>
+</ul>
+</div>
+
+<div class="card red">
+❗ Не подписвай „доброволно предаване“ на колата.
+</div>
+
+<div class="card">
+<h3>📝 Напишете възражение в акта (АУАН):</h3>
+Не подписвайте празни полета. Напишете:
+<br><br>
+
+<div class="quote">
+„Не съм съгласен с показанията на техническото средство.<br>
+Не съм употребявал забранени вещества.<br>
+Настоявам за медицинско изследване и кръвна проба.<br>
+Не предавам автомобила доброволно.“
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</body>
+</html>

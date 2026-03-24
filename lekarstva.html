@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1657a8" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<title>Лекарства</title>
+
+<style>
+:root{
+  --bg:#eef2f7;
+  --header1:#0d3c78;
+  --header2:#1657a8;
+  --card:#ffffff;
+  --text:#17324f;
+  --muted:#5f7289;
+  --green:#238a45;
+  --orange:#d97706;
+  --danger:#d91f1f;
+  --shadow:0 10px 22px rgba(0,0,0,.12);
+  --radius:22px;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(180deg,#dfe7f1 0%, #eef2f7 100%);
+  display:flex;
+  justify-content:center;
+  min-height:100vh;
+  color:var(--text);
+}
+
+.phone{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  background:var(--bg);
+}
+
+.header{
+  background:linear-gradient(180deg,var(--header1),var(--header2));
+  color:white;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.12);
+}
+
+.header h1{
+  margin:0;
+  font-size:28px;
+  font-weight:800;
+}
+
+.header p{
+  margin:10px 0 0;
+  font-size:15px;
+  line-height:1.4;
+  opacity:.96;
+  font-weight:700;
+}
+
+.back-btn{
+  display:inline-block;
+  margin:16px;
+  padding:10px 16px;
+  background:#e5e7eb;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+  color:#1f2937;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.content{
+  padding:0 16px 16px;
+}
+
+.search-wrap{
+  margin-bottom:14px;
+}
+
+.search{
+  width:100%;
+  border:none;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  padding:18px;
+  font-size:18px;
+  outline:none;
+}
+
+.count{
+  margin:0 2px 14px;
+  color:var(--text);
+  font-size:14px;
+  font-weight:800;
+}
+
+.results{
+  display:grid;
+  gap:14px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+.drug-name{
+  margin:0 0 14px;
+  font-size:22px;
+  line-height:1.2;
+  font-weight:800;
+  color:#1657a8;
+}
+
+.row{
+  margin-bottom:12px;
+}
+
+.label{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+  margin-bottom:3px;
+  text-transform:uppercase;
+  letter-spacing:.2px;
+}
+
+.value{
+  font-size:16px;
+  line-height:1.4;
+  font-weight:700;
+  white-space:pre-line;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:6px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.badge.low{
+  background:rgba(35,138,69,.12);
+  color:var(--green);
+}
+
+.badge.medium{
+  background:rgba(217,119,6,.12);
+  color:var(--orange);
+}
+
+.badge.high{
+  background:rgba(217,31,31,.12);
+  color:var(--danger);
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  font-weight:700;
+  padding:18px 8px;
+}
+</style>
+</head>
+
+<body>
+  <main class="phone">
+    <header class="header">
+      <h1>Лекарства</h1>
+      <p>Търси по търговско име, активно вещество или реакция.</p>
+    </header>
+
+    <a href="index.html" class="back-btn">← Назад</a>
+
+    <section class="content">
+      <div class="search-wrap">
+        <input id="searchInput" class="search" type="text" placeholder="Търси лекарство..." />
+      </div>
+
+      <div id="count" class="count"></div>
+      <div id="results" class="results"></div>
+    </section>
+  </main>
+
+  <script>
+    let medicines = [];
+    const results = document.getElementById('results');
+    const searchInput = document.getElementById('searchInput');
+    const count = document.getElementById('count');
+
+    function riskMeta(risk){
+      if(risk === 'high') return {text:'Висок риск', cls:'high'};
+      if(risk === 'low') return {text:'Нисък риск', cls:'low'};
+      return {text:'Възможна реакция', cls:'medium'};
+    }
+
+    function normalize(text){
+      return (text || '').toLowerCase().replace(/\s+/g,' ').trim();
+    }
+
+    function render(list){
+      count.textContent = `Намерени: ${list.length}`;
+
+      if(!list.length){
+        results.innerHTML = '<div class="card empty">Няма намерени резултати.</div>';
+        return;
+      }
+
+      results.innerHTML = list.map(item => {
+        const risk = riskMeta(item.risk);
+
+        return `
+          <article class="card">
+            <h2 class="drug-name">${item.name}</h2>
+
+            <div class="row">
+              <span class="label">Активно вещество</span>
+              <div class="value">${item.substance}</div>
+            </div>
+
+            <div class="row">
+              <span class="label">Възможна кръстосана реакция</span>
+              <div class="value">${item.reaction}</div>
+              <span class="badge ${risk.cls}">${risk.text}</span>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function filterMedicines(){
+      const q = normalize(searchInput.value);
+
+      if(!q){
+        render(medicines);
+        return;
+      }
+
+      const filtered = medicines.filter(item =>
+        normalize(`${item.name} ${item.substance} ${item.reaction}`).includes(q)
+      );
+
+      render(filtered);
+    }
+
+    fetch('./lekarstva.json')
+      .then(r => r.json())
+      .then(data => {
+        medicines = data;
+        render(medicines);
+      })
+      .catch(() => {
+        results.innerHTML = '<div class="card empty">Неуспешно зареждане на списъка.</div>';
+      });
+
+    searchInput.addEventListener('input', filterMedicines);
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+    }
+  </script>
+</body>
+</html>
