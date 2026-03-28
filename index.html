@@ -4,41 +4,47 @@
 <meta charset="UTF-8" />
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#1657a8" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon-192.png" />
-  <title>Проверка от КАТ? Избери действие</title>
-  <style>
-    :root{
-      --bg:#eef2f7;
-      --header1:#0d3c78;
-      --header2:#1657a8;
-      --red1:#ff4b4b;
-      --red2:#d91f1f;
-      --green1:#2f9e44;
-      --green2:#1c7c35;
-      --blue1:#3b82f6;
-      --blue2:#1e40af;
-      --purple1:#ff4fd8;
-      --purple2:#c218a6;
-      --orange1:#f59e0b;
-      --orange2:#d97706;
-      --card-radius:24px;
-      --shadow:0 10px 22px rgba(0,0,0,.12);
-      --text:#ffffff;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#dfe7f1 0%, #eef2f7 100%);
-      display:flex;
-      justify-content:center;
-      min-height:100vh;
-    }
-    .phone{width:100%;max-width:430px;min-height:100vh;background:var(--bg)}
-    .header{
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1657a8" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<title>Проверка от КАТ? Избери действие</title>
+
+<style>
+:root{
+  --bg:#eef2f7;
+  --header1:#0d3c78;
+  --header2:#1657a8;
+  --red1:#ff4b4b;
+  --red2:#d91f1f;
+  --green1:#2f9e44;
+  --green2:#1c7c35;
+  --blue1:#3b82f6;
+  --blue2:#1e40af;
+  --purple1:#ff4fd8;
+  --purple2:#c218a6;
+  --orange1:#f59e0b;
+  --orange2:#d97706;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(180deg,#dfe7f1 0%, #eef2f7 100%);
+  display:flex;
+  justify-content:center;
+  min-height:100vh;
+}
+
+.phone{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  background:var(--bg)
+}
+
+.header{
   background:linear-gradient(180deg,var(--header1),var(--header2));
   color:white;
   padding:clamp(24px,5vw,34px) clamp(16px,4vw,20px) clamp(20px,4vw,28px);
@@ -83,6 +89,15 @@
   gap:clamp(12px,3vw,16px);
 }
 
+/* 👉 нов бутон */
+.position{
+  background:linear-gradient(180deg,#64748b,#334155);
+  min-height:clamp(95px,24vw,118px);
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,3vw,16px);
+}
+
 .icon-big{
   width:clamp(56px,14vw,74px);
   height:clamp(56px,14vw,74px);
@@ -106,14 +121,16 @@
   font-weight:700;
 }
 
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:clamp(12px,3vw,16px);
 }
 
+/* 👉 само тук пипаме */
 .small{
-  min-height:clamp(135px,34vw,176px);
+  min-height:110px;
   display:flex;
   flex-direction:column;
 }
@@ -169,6 +186,7 @@
 .labels span{
   width:clamp(54px,14vw,66px);
 }
+
 .meds{background:linear-gradient(180deg,var(--green1),var(--green2))}
 .drugtest{background:linear-gradient(180deg,var(--blue1),var(--blue2))}
 .rights{background:linear-gradient(180deg,var(--purple1),var(--purple2))}
@@ -177,67 +195,73 @@
 .fb{background:#1c63d5}
 .yt{background:#ef2c2c}
 .mail{background:#64748b}
-  </style>
+</style>
 </head>
+
 <body>
-  <main class="phone">
-    <header class="header">
-      <h1>Проверка от КАТ?<br>Избери действие</h1>
-    </header>
-    <section class="content">
-      <div class="hero">
-        <a class="card emergency" href="speshno.html">
-          <div class="icon-big">🚨</div>
-          <div>
-            <div class="title">СПЕШНО</div>
-            <div class="subtitle">Положителен тест</div>
-          </div>
-        </a>
-        <div class="grid">
-          <a class="card small meds" href="lekarstva.html">
-            <div class="icon-big">💊</div>
-            <div class="title">Лекарства</div>
-            <div class="subtitle">Провери лекарство</div>
-          </a>
-          <a class="card small drugtest" href="drugtest.html">
-            <div class="icon-big">🧪</div>
-            <div class="title">DrugTest 5000</div>
-            <div class="subtitle">Инструкция</div>
-          </a>
-          <a class="card small rights" href="dokumenti.html">
-            <div class="icon-big">⚖️</div>
-            <div class="title">Документи и права</div>
-            <div class="subtitle">Какво може и няма право КАТ</div>
-          </a>
-          <a class="card small lawyers" href="advokati.html">
-            <div class="icon-big">☎️</div>
-            <div class="title">Адвокати</div>
-            <div class="subtitle">Обади се</div>
-          </a>
-        </div>
-      </div>
-      <div class="bottom">
-  <a class="social fb"
-     href="https://facebook.com/groups/972347794868457"
-     target="_blank"
-     rel="noopener"
-     aria-label="Facebook">f</a>
+<main class="phone">
 
-  <a class="social yt"
-   href="https://youtube.com/@silnismezaedno"
-   target="_blank"
-   rel="noopener"
-   aria-label="YouTube">
+<header class="header">
+  <h1>Проверка от КАТ?</h1>
+</header>
 
-<svg viewBox="0 0 24 24" fill="white" width="28" height="28">
-<path d="M23.5 6.2s-.2-1.7-.9-2.5c-.9-.9-1.9-.9-2.4-1C16.8 2.3 12 2.3 12 2.3h0s-4.8 0-8.2.4c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.3 8.2.3 10.1v1.8c0 1.9.2 3.9.2 3.9s.2 1.7.9 2.5c.9.9 2.1.9 2.7 1 2 .2 7.9.4 7.9.4s4.8 0 8.2-.4c.5-.1 1.5-.1 2.4-1 .7-.8.9-2.5.9-2.5s.2-2 .2-3.9v-1.8c0-1.9-.2-3.9-.2-3.9zM9.8 14.6V7.9l6.5 3.4-6.5 3.3z"/>
-</svg>
+<section class="content">
 
+<div class="hero">
+
+<!-- СПЕШНО -->
+<a class="card emergency" href="speshno.html">
+  <div class="icon-big">🚨</div>
+  <div>
+    <div class="title">СПЕШНО</div>
+    <div class="subtitle">Положителен тест</div>
+  </div>
 </a>
 
-  <a class="social mail"
-     href="mailto:silnismezaedno@gmail.com"
-     aria-label="Пиши ни">✉</a>
+<!-- GRID -->
+<div class="grid">
+
+<a class="card small meds" href="lekarstva.html">
+  <div class="icon-big">💊</div>
+  <div class="title">Лекарства</div>
+  <div class="subtitle">Провери лекарство</div>
+</a>
+
+<a class="card small drugtest" href="drugtest.html">
+  <div class="icon-big">🧪</div>
+  <div class="title">DrugTest 5000</div>
+  <div class="subtitle">Инструкция</div>
+</a>
+
+<a class="card small rights" href="dokumenti.html">
+  <div class="icon-big">⚖️</div>
+  <div class="title">Документи и права</div>
+  <div class="subtitle">Какво може и няма право КАТ</div>
+</a>
+
+<a class="card small lawyers" href="advokati.html">
+  <div class="icon-big">☎️</div>
+  <div class="title">Адвокати</div>
+  <div class="subtitle">Обади се</div>
+</a>
+
+</div>
+
+<!-- 👉 нов бутон -->
+<a class="card position" href="position.html">
+  <div class="icon-big">📢</div>
+  <div>
+    <div class="title">Позиция и искания</div>
+  </div>
+</a>
+
+</div>
+
+<!-- SOCIAL -->
+<div class="bottom">
+  <a class="social fb" href="https://facebook.com/groups/972347794868457">f</a>
+  <a class="social yt" href="https://youtube.com/@silnismezaedno">▶</a>
+  <a class="social mail" href="mailto:silnismezaedno@gmail.com">✉</a>
 </div>
 
 <div class="labels">
@@ -245,12 +269,15 @@
   <span>YouTube</span>
   <span>Пиши ни</span>
 </div>
-    </section>
-  </main>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
-    }
-  </script>
+
+</section>
+</main>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+}
+</script>
+
 </body>
 </html>
