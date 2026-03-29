@@ -89,7 +89,6 @@ body{
   gap:clamp(12px,3vw,16px);
 }
 
-/* 👉 нов бутон */
 .position{
   background:linear-gradient(180deg,#64748b,#334155);
   min-height:clamp(95px,24vw,118px);
@@ -121,14 +120,12 @@ body{
   font-weight:700;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:clamp(12px,3vw,16px);
 }
 
-/* 👉 само тук пипаме */
 .small{
   min-height:110px;
   display:flex;
@@ -209,7 +206,6 @@ body{
 
 <div class="hero">
 
-<!-- СПЕШНО -->
 <a class="card emergency" href="speshno.html">
   <div class="icon-big">🚨</div>
   <div>
@@ -218,7 +214,6 @@ body{
   </div>
 </a>
 
-<!-- GRID -->
 <div class="grid">
 
 <a class="card small meds" href="lekarstva.html">
@@ -247,7 +242,6 @@ body{
 
 </div>
 
-<!-- 👉 нов бутон -->
 <a class="card position" href="position.html">
   <div class="icon-big">📢</div>
   <div>
@@ -257,7 +251,6 @@ body{
 
 </div>
 
-<!-- SOCIAL -->
 <div class="bottom">
   <a class="social fb" href="https://facebook.com/groups/972347794868457">f</a>
   <a class="social yt" href="https://youtube.com/@silnismezaedno">▶</a>
@@ -275,7 +268,19 @@ body{
 
 <script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').then(reg => {
+      reg.update();
+
+      setInterval(() => {
+        reg.update();
+      }, 60000);
+    });
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
+  });
 }
 </script>
 
